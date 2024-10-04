@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 5000;
-
+const cors = require('cors');
 // CORS Middleware setup (this should be at the top)
 app.use(cors({
   origin: '*',  // In production, replace '*' with the specific domain(s) allowed to access the resources.
