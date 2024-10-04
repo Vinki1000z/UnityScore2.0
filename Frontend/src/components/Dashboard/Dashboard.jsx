@@ -13,7 +13,13 @@ function Dashboard() {
 
   const fetchRecentPosts = async () => {
     try {
-      const response = await fetch(`${API_URL}feed/recent_post`);
+         const response = await fetch(`${API_URL}/feed/recent_post`, {
+      method: 'GET',
+      mode: 'cors',  // Ensure CORS is allowed
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
       if (!response.ok) {
         throw new Error('Failed to fetch recent posts');
       }
