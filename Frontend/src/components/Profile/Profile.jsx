@@ -11,7 +11,7 @@ import badge6 from '../../assets/badge-6.png';
 
 const badgesArray = [badge1,badge2,badge3,badge4,badge5,badge6];
 
-const API_URL = "https://unity-score2-0-backend-i6czcqo16.vercel.app/";
+const API_URL = "https://unity-score2-0-backend-i6czcqo16.vercel.app";
 
 function Profile() {
   const { user: currentUser } = useContext(AuthContext);

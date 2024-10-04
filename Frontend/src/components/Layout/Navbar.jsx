@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 
-const API_URL = "https://unity-score2-0-backend-i6czcqo16.vercel.app/"; 
+const API_URL = "https://unity-score2-0-backend-i6czcqo16.vercel.app"; 
 
 function Navbar() {
   const { user, setUser } = useContext(AuthContext);
