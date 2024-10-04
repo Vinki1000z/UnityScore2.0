@@ -8,7 +8,7 @@ const port = 5000;
 const cors = require('cors');
 require('dotenv').config();
 const app = express();
-
+app.use(cors());
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader(
@@ -18,11 +18,7 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
-app.use(cors({
-  origin: 'https://unity-score2-0-m94p9mk05-vikrant-chauhans-projects-59869ee4.vercel.app', // Your frontend URL
-  methods: 'GET,POST', // Specify allowed methods
-  credentials: true, // If you need to allow cookies or authentication headers
-}));
+
 app.use(bodyParser.json());
 
 app.use('/auth', authRoutes);
