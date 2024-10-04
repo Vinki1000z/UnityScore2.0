@@ -8,22 +8,18 @@ const port = 5000;
 const cors = require('cors');
 require('dotenv').config();
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: '*',  // In production, replace '*' with a specific domain.
+  methods: 'GET, POST, PUT, DELETE, OPTIONS',  // Specify allowed methods.
+  allowedHeaders: 'Content-Type, Authorization',  // Specify allowed headers.
+}));
 
 app.use(bodyParser.json());
 
 app.use('/auth', authRoutes);
 app.use('/feed', feedRoutes);
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');  // Allow all origins
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'OPTIONS, GET, POST, PUT, PATCH, DELETE'
-  );
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
 
 app.get('/', (req, res) => {
   res.send("Hello");
