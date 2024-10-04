@@ -1,44 +1,40 @@
-const path = require('path');
+const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
 const feedRoutes = require('./routes/feed');
-const port = 5000;
-const cors = require('cors');
 require('dotenv').config();
-const app = express();
 
+const app = express();
+const port = process.env.PORT || 5000;
+
+// CORS Middleware setup (this should be at the top)
 app.use(cors({
-  origin: '*',  // In production, replace '*' with a specific domain.
-  methods: 'GET, POST, PUT, DELETE, OPTIONS',  // Specify allowed methods.
-  allowedHeaders: 'Content-Type, Authorization',  // Specify allowed headers.
+  origin: '*',  // In production, replace '*' with the specific domain(s) allowed to access the resources.
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],  // Allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'],  // Allowed headers
 }));
 
 app.use(bodyParser.json());
 
+// Define routes after CORS middleware
 app.use('/auth', authRoutes);
 app.use('/feed', feedRoutes);
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
 
 app.get('/', (req, res) => {
   res.send("Hello");
 });
 
+// Database connection
 mongoose
-  .connect(process.env.MONOGODB_URL, {
+  .connect(process.env.MONGODB_URL, {
     dbName: 'CodeForum_DB',
   })
   .then((result) => {
-    console.log('DataBase Connected');
-    app.listen(8080);
+    console.log('Database Connected');
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    });
   })
   .catch((err) => console.log(err));
-  app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
-});
