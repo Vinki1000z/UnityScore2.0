@@ -30,7 +30,7 @@ function CreatePost() {
         formData.append('media', media);
       }
 
-      const response = await fetch(`${API_URL}/feed/post`, {
+      const response = await fetch(`${API_URL}feed/post`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
