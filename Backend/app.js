@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
 const feedRoutes = require('./routes/feed');
-
+const port = 5000;
 require('dotenv').config();
 const app = express();
 
@@ -44,3 +44,6 @@ mongoose
     app.listen(8080);
   })
   .catch((err) => console.log(err));
+  app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+});
