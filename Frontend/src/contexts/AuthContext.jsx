@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from 'react';
 
 export const AuthContext = createContext();
 
-const URL = import.meta.env.VITE_BACKEND_URL;
+const URL = "https://unity-score2-0-backend-i6czcqo16.vercel.app/";
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);

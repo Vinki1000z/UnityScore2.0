@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-const URL = import.meta.env.VITE_BACKEND_URL;
+const URL ="https://unity-score2-0-backend-i6czcqo16.vercel.app/";
 
 function Login() {
   const [email, setEmail] = useState('');

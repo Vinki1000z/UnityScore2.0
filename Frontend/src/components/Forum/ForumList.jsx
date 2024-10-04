@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import PostItem from './PostItem';
 
-const API_URL = import.meta.env.VITE_BACKEND_URL;
+const API_URL ="https://unity-score2-0-backend-i6czcqo16.vercel.app/";
 
 
 

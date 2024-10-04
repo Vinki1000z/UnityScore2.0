@@ -4,7 +4,7 @@ import { AuthContext } from '../../contexts/AuthContext'; // Adjust the import p
 import { Link } from 'react-router-dom';
 
 
-const API_URL = import.meta.env.VITE_BACKEND_URL;
+const API_URL = "https://unity-score2-0-backend-i6czcqo16.vercel.app/";
 
 function PostDetail() {
   const [data, setData] = useState(null);
