@@ -8,7 +8,8 @@ const port = 5000;
 const cors = require('cors');
 require('dotenv').config();
 const app = express();
-const cors = require('cors');
+app.use(cors());
+
 
 app.use(cors({
   origin: 'https://unity-score2-0-m94p9mk05-vikrant-chauhans-projects-59869ee4.vercel.app', // Replace this with your actual frontend URL
