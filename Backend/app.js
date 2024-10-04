@@ -31,6 +31,10 @@ app.use((error, req, res, next) => {
   res.status(status).json({ message: message, data: data });
 });
 
+app.get('/', (req, res) => {
+  res.send("Hello");
+});
+
 mongoose
   .connect(process.env.MONOGODB_URL, {
     dbName: 'CodeForum_DB',
