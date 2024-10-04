@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
 const feedRoutes = require('./routes/feed');
 const port = 5000;
+const cors = require('cors');
 require('dotenv').config();
 const app = express();
 
@@ -17,7 +18,7 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
-
+app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/auth', authRoutes);
